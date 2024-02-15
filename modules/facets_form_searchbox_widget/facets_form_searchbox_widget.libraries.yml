@@ -1,0 +1,11 @@
+# Custom module library for general purposes.
+searchable_facets:
+  css:
+    theme:
+      css/searchable-facets.css: {}
+  js:
+    js/searchable-facets/scripts.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery
+    - core/drupal

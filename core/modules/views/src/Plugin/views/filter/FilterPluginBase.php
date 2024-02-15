@@ -902,7 +902,7 @@ abstract class FilterPluginBase extends HandlerBase implements CacheableDependen
         '#options' => $groups,
       ];
       if (!empty($this->options['group_info']['multiple'])) {
-        if (count($groups) < 5) {
+        if (count($groups) < 50) {
           $form[$value]['#type'] = 'checkboxes';
         } else {
           $form[$value]['#type'] = 'select';

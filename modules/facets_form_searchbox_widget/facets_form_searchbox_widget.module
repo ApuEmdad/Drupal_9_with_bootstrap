@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Facets Form Searchbox Widget module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+ /**
+ * Implements hook_theme().
+ */
+function facets_form_searchbox_widget_theme() {
+  $theme['facets_item_list__facets_form_searchable_checkbox'] = [
+    'base hook' => 'facets_item_list',
+  ];
+  $theme['facets_result_item__facets_form_searchable_checkbox'] = [
+    'base hook' => 'facets_result_item',
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function facets_form_searchbox_widget_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables["facet"])) {
+    if ($variables["facet"]->getWidget()['type'] == 'facets_form_searchable_checkbox') {
+      if ($hook == 'facets_form_item') {
+        $suggestions[] = 'facets_result_item__facets_form_searchable_checkbox';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_input_alter().
+ */
+function facets_form_searchbox_widget_theme_suggestions_input_alter(&$suggestions, array $variables) {
+
+  if ($variables['element']['#type'] === 'checkbox') {
+    if (isset($variables['element']['#parents'][0])) {
+        $suggestions[] = $variables['theme_hook_original'].'__'.$variables['element']['#parents'][0];
+    }
+  }
+}

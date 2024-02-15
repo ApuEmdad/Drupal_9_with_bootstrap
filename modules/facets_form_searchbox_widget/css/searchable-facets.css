@@ -1,0 +1,11 @@
+.hide-facet-item-searchable-facets {
+  display: none;
+}
+
+/* .show-facet-item-searchable-facets {
+  display: block!important;
+} */
+
+.facets-form-searchable-checkbox .form-checkboxes .checkbox.show-facet-item-searchable-facets {
+  display: block;
+}
